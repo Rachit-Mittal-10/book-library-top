@@ -56,6 +56,11 @@ body{
     border-radius: 5px;
 }
 
+/* #page-wrapper header .add-book-button-container button:focus,
+#page-wrapper header .add-book-button-container button:active{
+    border: none;
+} */
+
 #page-wrapper footer{
     position: absolute;
     left:0px;
@@ -76,7 +81,6 @@ body{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 20px;
-    height: 500px;
 }
 
 /* Content Card is created dynamically using JavaScript */
@@ -99,4 +103,39 @@ body{
     border-radius: 50%;
     background-color: transparent;
     padding: 5px;
+}
+
+#page-wrapper .book-detail-dialog{
+    padding: 20px;
+    max-width: 400px;
+    top: 200px;
+    left: 500px;
+    border: 1px dotted lightgrey;
+    box-shadow: grey 5px 5px;
+}
+
+#page-wraapper .book-detail-dialog::backdrop{
+    background-color: grey;
+}
+
+#page-wrapper .book-detail-dialog .book-detail-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#page-wrapper .book-detail-dialog .book-detail-form div{
+    display: flex;
+    gap: 5px;
+}
+
+#page-wrapper .book-detail-dialog .book-detail-form .form-button-div{
+    justify-content: center;
+    gap: 20px;
+}
+
+#page-wrapper .book-detail-dialog .book-detail-form .form-button-div button{
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px lightgrey solid;
 }

@@ -8,19 +8,57 @@
 </head>
 <body>
     <div id="page-wrapper">
+        
         <!-- Header Markup -->
         <header>
             <div>
                 <p>Library</p>
             </div>
             <div class="add-book-button-container">
-                <button>Add Book</button>
+                <button id="add-book-button">Add Book</button>
             </div>
         </header>
+
         <!-- Main Content Markup -->
-        <main>
-            
-        </main>
+        <!-- This will be dynamically filled by JavaScript -->
+        <main></main>
+        
+        <!-- Dialog Markup -->
+        <dialog class="book-detail-dialog">
+            <form method="dialog" class="book-detail-form">
+                <h3>Enter Book Details</h3>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <div>
+                    <label for="pages">Pages:</label>
+                    <input type="number" name="pages" id="pages">
+                </div>
+                <div>
+                    <label for="readStatus">Read:</label>
+                    <div class="read-option-div">
+                        <div>
+                            <input type="radio" id="true-button" name="readStatus" value="true">
+                            <label for="true-button">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="false-button" name="readStatus" value="false">
+                            <label for="false-button">False</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-button-div">
+                    <button type="button" id="cancel-button">Cancel</button>
+                    <button type="button" id="submit-button">Submit</button>
+                </div>
+            </form>
+        </dialog>
+        
         <!-- Footer Markup -->
         <footer>
             <p>Made By Rachit Mittal</p>

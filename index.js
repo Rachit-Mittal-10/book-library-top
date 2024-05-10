@@ -1,4 +1,7 @@
 const main_container = document.getElementsByTagName("main")[0];
+const add_book_button = document.getElementById("add-book-button");
+const dialogElement = document.getElementsByClassName("book-detail-dialog")[0];
+const cancel_button = document.getElementById("cancel-button");
 
 let library = [];
 
@@ -62,3 +65,11 @@ for(let book of library){
     let bookCard = createCard(book);
     main_container.appendChild(bookCard);
 }
+
+add_book_button.addEventListener("click",() => {
+    dialogElement.showModal();
+});
+
+cancel_button.addEventListener("click",() => {
+    dialogElement.close();
+});
