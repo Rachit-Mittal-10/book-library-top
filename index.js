@@ -30,13 +30,7 @@ let createCard = function(bookObject){
     img_element.style.height = "20px";
     img_element.style.width = "20px";
     delete_button.appendChild(img_element);
-    delete_button.style.border = "none";
-    delete_button.style.borderRadius = "50%";
-    delete_button.style.padding = "5px";
-    delete_button.style.backgroundColor = "transparent";
     delete_button_div.appendChild(delete_button);
-    delete_button_div.style.display = "flex";
-    delete_button_div.style.justifyContent = "end";
 
     let name_div = document.createElement("div");
     name_div.className = "name-div";

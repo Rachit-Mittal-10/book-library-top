@@ -48,7 +48,8 @@ body{
 #page-wrapper header .add-book-button-container button{
     padding: 0px 20px 0px 20px;
     font-weight: 1000;
-    font-size: 16px;
+    font-size: 20px;
+    font-style: oblique;
     color: white;
     background-color: blue;
     border: none;
@@ -86,4 +87,16 @@ body{
 
 #page-wrapper main .content-card  div+div {
     padding-top: 20px;
+}
+
+#page-wrapper main .content-card .delete-button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#page-wrapper main .content-card .delete-button-div .delete-button{
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 5px;
 }
