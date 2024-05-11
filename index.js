@@ -4,7 +4,7 @@ const dialogElement = document.getElementsByClassName("book-detail-dialog")[0];
 const cancel_button = document.getElementById("cancel-button");
 const submit_button = document.getElementById("submit-button");
 
-let library = [];
+const library = [];
 
 class Book {
     constructor(name, author, pages, read) {
