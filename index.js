@@ -61,6 +61,11 @@ let addObjectToPage = function(book){
     main_container.appendChild(bookCard);
 }
 
+let addBookToLibrary = function(Name,author,pages,readStatus){
+    let book = new Book(Name,author,pages,readStatus);
+    library.push(book);
+}
+
 add_book_button.addEventListener("click",() => {
     dialogElement.showModal();
 });
@@ -92,11 +97,8 @@ submit_button.addEventListener("click", () => {
     document.getElementsByClassName("book-detail-form")[0].reset();
 });
 
-let Book1 = new Book("Kraven Last Hunt","J.M.Demaittis",120,false);
-let Book2 = new Book("Watchmen","Alan Moore",150,true);
-library.push(Book1);
-library.push(Book2);
-console.log(library);
+addBookToLibrary("Kraven Last Hunt","J.M.Demaittis",120,false);
+addBookToLibrary("Watchmen","Alan Moore",150,true);
 
 for(let book of library){
     addObjectToPage(book);
