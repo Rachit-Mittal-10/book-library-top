@@ -2,6 +2,7 @@ const main_container = document.getElementsByTagName("main")[0];
 const add_book_button = document.getElementById("add-book-button");
 const dialogElement = document.getElementsByClassName("book-detail-dialog")[0];
 const cancel_button = document.getElementById("cancel-button");
+const submit_button = document.getElementById("submit-button");
 
 let library = [];
 
@@ -13,12 +14,6 @@ class Book {
         this.read = read;
     }
 }
-
-let Book1 = new Book("Kraven Last Hunt","J.M.Demaittis",120,false);
-let Book2 = new Book("Watchmen","Alan Moore",150,true);
-library.push(Book1);
-library.push(Book2);
-console.log(library);
 
 let createCard = function(bookObject){
     let content_card = document.createElement("div");
@@ -61,7 +56,7 @@ let createCard = function(bookObject){
     return content_card;
 }
 
-for(let book of library){
+let addObjectToPage = function(book){
     let bookCard = createCard(book);
     main_container.appendChild(bookCard);
 }
@@ -73,3 +68,36 @@ add_book_button.addEventListener("click",() => {
 cancel_button.addEventListener("click",() => {
     dialogElement.close();
 });
+
+submit_button.addEventListener("click", () => {
+    let Name = document.getElementById("name").value;
+    let Author = document.getElementById("author").value;
+    let Pages = document.getElementById("pages").valueAsNumber;
+    let true_status = document.getElementById("true-button").checked;
+    let false_status = document.getElementById("false-button").checked;
+    let readStatus = false;
+    if(true_status == true){
+        readStatus = true;
+    }
+    else if(false_status == true){
+        readStatus = false;
+    }
+    else{
+        readStatus = null;
+    }
+    let bookObject = new Book(Name,Author,Pages,readStatus);
+    library.push(bookObject);
+    dialogElement.close();
+    addObjectToPage(bookObject);
+    document.getElementsByClassName("book-detail-form")[0].reset();
+});
+
+let Book1 = new Book("Kraven Last Hunt","J.M.Demaittis",120,false);
+let Book2 = new Book("Watchmen","Alan Moore",150,true);
+library.push(Book1);
+library.push(Book2);
+console.log(library);
+
+for(let book of library){
+    addObjectToPage(book);
+}
