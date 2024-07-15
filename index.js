@@ -6,6 +6,11 @@ const submit_button = document.getElementById("submit-button");
 
 const library = [];
 
+function toTitleCase(str){
+    let newStr = str[0].toUpperCase() + str.substring(1).toLowerCase();
+    return newStr;
+}
+
 class Book {
     constructor(name, author, pages, read) {
         this.name = name;
@@ -16,9 +21,11 @@ class Book {
 }
 
 let createCard = function(bookObject){
+    // Createes the wrapping div for card
     let content_card = document.createElement("div");
     content_card.className = "content-card";
 
+    // Adds the close button "X" marks on top-right
     let delete_button_div = document.createElement("div");
     delete_button_div.className = "delete-button-div";
     let delete_button = document.createElement("button");
@@ -30,23 +37,52 @@ let createCard = function(bookObject){
     delete_button.appendChild(img_element);
     delete_button_div.appendChild(delete_button);
 
+    // Creates the div for name
     let name_div = document.createElement("div");
     name_div.className = "name-div";
     name_div.innerHTML = `<strong>Name:</strong> ${bookObject.name}`;
 
-    
+    // Creates the author div
     let author_div = document.createElement("div");
     author_div.className = "author-div";
     author_div.innerHTML = `<strong>Author:</strong> ${bookObject.author}`;
     
+    // Creates the pages div
     let pages_div = document.createElement("div");
     pages_div.className = "pages-div";
     pages_div.innerHTML = `<strong>Pages:</strong> ${bookObject.pages}`;
     
+    // Creates the div
     let read_status_div = document.createElement("div");
     read_status_div.className = "read-status-div";
-    read_status_div.innerHTML = `<strong>Read:</strong> ${bookObject.read}`;
+    let read_text = document.createElement("p");
+    read_text.className = "read-text";
+    read_text.innerHTML = "<strong>Read: </strong>";
+    let read_button = document.createElement("button");
+    read_button.className = "read-button";
+    let str = `${bookObject.read}`;
+    str = toTitleCase(str);
+    console.log(typeof str);
+    read_button.innerHTML = str;
+    read_button.addEventListener("click",
+        function changeReadStatus(){
+            bookObject.read = !bookObject.read;
+            str = `${bookObject.read}`;
+            read_button.innerHTML = toTitleCase(str);
+        }
+    );
+    read_button.style.marginLeft = "10px";
+    read_button.style.backgroundColor = "blue";
+    read_button.style.color = "white";
+    read_button.style.display = "flexbox";
+    read_button.style.padding = "3px 8px";
+    read_button.style.fontSize = "16px";
+    read_button.style.fontWeight = "bold";
+    read_text.style.display = "inline";
+    read_status_div.appendChild(read_text);
+    read_status_div.appendChild(read_button);
     
+    // Adds all the div to wrapping
     content_card.appendChild(delete_button_div);
     content_card.appendChild(name_div);
     content_card.appendChild(author_div);
@@ -64,6 +100,7 @@ let addObjectToPage = function(book){
 let addBookToLibrary = function(Name,author,pages,readStatus){
     let book = new Book(Name,author,pages,readStatus);
     library.push(book);
+    addObjectToPage(book);
 }
 
 add_book_button.addEventListener("click",() => {
@@ -99,7 +136,3 @@ submit_button.addEventListener("click", () => {
 
 addBookToLibrary("Kraven Last Hunt","J.M.Demaittis",120,false);
 addBookToLibrary("Watchmen","Alan Moore",150,true);
-
-for(let book of library){
-    addObjectToPage(book);
-}
