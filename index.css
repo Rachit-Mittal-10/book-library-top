@@ -56,11 +56,6 @@ body{
     border-radius: 5px;
 }
 
-/* #page-wrapper header .add-book-button-container button:focus,
-#page-wrapper header .add-book-button-container button:active{
-    border: none;
-} */
-
 #page-wrapper footer{
     position: absolute;
     left:0px;
@@ -141,4 +136,18 @@ body{
     padding: 5px 15px;
     border-radius: 10px;
     border: 1px lightgrey solid;
+}
+
+#page-wrapper .content-card .read-status-div .read-button{
+    margin-left: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    display: flexbox;
+    padding: 3px 8px;
+}
+
+#page-wrapper .content-card .read-status-div .read-text{
+    display: inline;
 }

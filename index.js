@@ -52,7 +52,7 @@ let createCard = function(bookObject){
     pages_div.className = "pages-div";
     pages_div.innerHTML = `<strong>Pages:</strong> ${bookObject.pages}`;
     
-    // Creates the div
+    // Creates the read-status div
     let read_status_div = document.createElement("div");
     read_status_div.className = "read-status-div";
     let read_text = document.createElement("p");
@@ -71,14 +71,6 @@ let createCard = function(bookObject){
             read_button.innerHTML = toTitleCase(str);
         }
     );
-    read_button.style.marginLeft = "10px";
-    read_button.style.backgroundColor = "blue";
-    read_button.style.color = "white";
-    read_button.style.display = "flexbox";
-    read_button.style.padding = "3px 8px";
-    read_button.style.fontSize = "16px";
-    read_button.style.fontWeight = "bold";
-    read_text.style.display = "inline";
     read_status_div.appendChild(read_text);
     read_status_div.appendChild(read_button);
     
