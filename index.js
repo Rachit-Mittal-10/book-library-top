@@ -62,7 +62,6 @@ let createCard = function(bookObject){
     read_button.className = "read-button";
     let str = `${bookObject.read}`;
     str = toTitleCase(str);
-    console.log(typeof str);
     read_button.innerHTML = str;
     read_button.addEventListener("click",
         function changeReadStatus(){
@@ -119,8 +118,8 @@ submit_button.addEventListener("click", () => {
     else{
         readStatus = null;
     }
-    addBookToLibrary(Name,Author,Page,readStatus);
     dialogElement.close();
+    addBookToLibrary(Name,Author,Pages,readStatus);
     document.getElementsByClassName("book-detail-form")[0].reset();
 });
 

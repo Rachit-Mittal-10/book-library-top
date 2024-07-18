@@ -146,6 +146,8 @@ body{
     font-size: 16px;
     display: flexbox;
     padding: 3px 8px;
+    border: none;
+    border-radius: 5px;
 }
 
 #page-wrapper .content-card .read-status-div .read-text{
