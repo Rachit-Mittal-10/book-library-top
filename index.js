@@ -119,10 +119,8 @@ submit_button.addEventListener("click", () => {
     else{
         readStatus = null;
     }
-    let bookObject = new Book(Name,Author,Pages,readStatus);
-    library.push(bookObject);
+    addBookToLibrary(Name,Author,Page,readStatus);
     dialogElement.close();
-    addObjectToPage(bookObject);
     document.getElementsByClassName("book-detail-form")[0].reset();
 });
 
