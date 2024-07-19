@@ -64,7 +64,7 @@ let createCard = function(bookObject){
     str = toTitleCase(str);
     read_button.innerHTML = str;
     read_button.addEventListener("click",
-        function changeReadStatus(){
+        () => {
             bookObject.read = !bookObject.read;
             str = `${bookObject.read}`;
             read_button.innerHTML = toTitleCase(str);

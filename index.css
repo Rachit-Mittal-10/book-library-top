@@ -10,7 +10,6 @@ body{
     background-image: linear-gradient(30deg,rgb(224, 243, 115),rgb(157, 240, 233));
 }
 
-
 #page-wrapper{
     display: flex;
     flex-direction: column;
@@ -78,31 +77,6 @@ body{
     grid-gap: 20px;
 }
 
-/* Content Card is created dynamically using JavaScript */
-#page-wrapper main .content-card{
-    display: flex;
-    flex-direction: column;
-    border: 3px solid yellowgreen;
-    padding: 0px 0px 20px 20px;
-    box-shadow: 5px 5px yellowgreen;
-}
-
-#page-wrapper main .content-card  div+div {
-    padding-top: 20px;
-}
-
-#page-wrapper main .content-card .delete-button-div{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
-#page-wrapper main .content-card .delete-button-div .delete-button{
-    border: none;
-    border-radius: 50%;
-    background-color: transparent;
-    padding: 5px;
-}
-
 #page-wrapper .book-detail-dialog{
     padding: 20px;
     max-width: 400px;
@@ -136,6 +110,35 @@ body{
     padding: 5px 15px;
     border-radius: 10px;
     border: 1px lightgrey solid;
+}
+
+
+/* 
+ALL THE CSS WRITTEN BELOW IS FOR DYNAMICALLY CREATED ELEMENTS
+Content Card is created dynamically using JavaScript
+*/
+#page-wrapper main .content-card{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid yellowgreen;
+    padding: 0px 0px 20px 20px;
+    box-shadow: 5px 5px yellowgreen;
+}
+
+#page-wrapper main .content-card  div+div {
+    padding-top: 20px;
+}
+
+#page-wrapper main .content-card .delete-button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#page-wrapper main .content-card .delete-button-div .delete-button{
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 5px;
 }
 
 #page-wrapper .content-card .read-status-div .read-button{
