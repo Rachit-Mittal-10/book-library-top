@@ -17,10 +17,11 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
+        this.renderStatus = false;
     }
 }
 
-let createCard = function(bookObject){
+let createCard = function(book){
     // Createes the wrapping div for card
     let content_card = document.createElement("div");
     content_card.className = "content-card";
@@ -32,25 +33,28 @@ let createCard = function(bookObject){
     delete_button.className = "delete-button";
     let img_element = document.createElement("img");
     img_element.src = "./images/close.svg";
-    img_element.style.height = "20px";
-    img_element.style.width = "20px";
+    delete_button.addEventListener("click",() => {
+        main_container.removeChild(content_card);
+        let i = library.indexOf(book);
+        library.splice(i,1);
+    });
     delete_button.appendChild(img_element);
     delete_button_div.appendChild(delete_button);
 
     // Creates the div for name
     let name_div = document.createElement("div");
     name_div.className = "name-div";
-    name_div.innerHTML = `<strong>Name:</strong> ${bookObject.name}`;
+    name_div.innerHTML = `<strong>Name:</strong> ${book.name}`;
 
     // Creates the author div
     let author_div = document.createElement("div");
     author_div.className = "author-div";
-    author_div.innerHTML = `<strong>Author:</strong> ${bookObject.author}`;
+    author_div.innerHTML = `<strong>Author:</strong> ${book.author}`;
     
     // Creates the pages div
     let pages_div = document.createElement("div");
     pages_div.className = "pages-div";
-    pages_div.innerHTML = `<strong>Pages:</strong> ${bookObject.pages}`;
+    pages_div.innerHTML = `<strong>Pages:</strong> ${book.pages}`;
     
     // Creates the read-status div
     let read_status_div = document.createElement("div");
@@ -60,13 +64,13 @@ let createCard = function(bookObject){
     read_text.innerHTML = "<strong>Read: </strong>";
     let read_button = document.createElement("button");
     read_button.className = "read-button";
-    let str = `${bookObject.read}`;
+    let str = `${book.read}`;
     str = toTitleCase(str);
     read_button.innerHTML = str;
     read_button.addEventListener("click",
         () => {
-            bookObject.read = !bookObject.read;
-            str = `${bookObject.read}`;
+            book.read = !book.read;
+            str = `${book.read}`;
             read_button.innerHTML = toTitleCase(str);
         }
     );
@@ -85,13 +89,18 @@ let createCard = function(bookObject){
 
 let addObjectToPage = function(book){
     let bookCard = createCard(book);
+    book.renderStatus = true;
     main_container.appendChild(bookCard);
 }
 
 let addBookToLibrary = function(Name,author,pages,readStatus){
     let book = new Book(Name,author,pages,readStatus);
     library.push(book);
-    addObjectToPage(book);
+}
+
+let closeDialogElement = function(){
+    dialogElement.close();
+    document.getElementsByClassName("book-detail-form")[0].reset();
 }
 
 add_book_button.addEventListener("click",() => {
@@ -99,10 +108,13 @@ add_book_button.addEventListener("click",() => {
 });
 
 cancel_button.addEventListener("click",() => {
-    dialogElement.close();
+    closeDialogElement();
 });
 
 submit_button.addEventListener("click", () => {
+    /* This function retrieves the values filled on the form
+    and add book to the library
+    */
     let Name = document.getElementById("name").value;
     let Author = document.getElementById("author").value;
     let Pages = document.getElementById("pages").valueAsNumber;
@@ -118,10 +130,21 @@ submit_button.addEventListener("click", () => {
     else{
         readStatus = null;
     }
-    dialogElement.close();
     addBookToLibrary(Name,Author,Pages,readStatus);
-    document.getElementsByClassName("book-detail-form")[0].reset();
+    renderPage();
+    closeDialogElement();
 });
+
+let renderPage = function(){
+    for(let index in library){
+        let book = library[index];
+        if(!book.renderStatus){
+            addObjectToPage(book);
+        }
+    }
+}
 
 addBookToLibrary("Kraven Last Hunt","J.M.Demaittis",120,false);
 addBookToLibrary("Watchmen","Alan Moore",150,true);
+
+renderPage();

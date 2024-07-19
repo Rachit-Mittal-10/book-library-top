@@ -156,3 +156,8 @@ Content Card is created dynamically using JavaScript
 #page-wrapper .content-card .read-status-div .read-text{
     display: inline;
 }
+
+#page-wrapper .content-card .delete-button-div .delete-button img{
+    height: 20px;
+    width: 20px;
+}
